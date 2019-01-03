@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Our First Mocha Tests</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.0/mocha.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.0/mocha.js"></script>
+  <script src="http://chaijs.com/chai.js"></script>
+  <script type="text/javascript">
+  	mocha.setup('bdd');
+  	var expect = chai.expect;
+
+  	var earth = {
+  		isRound: true,
+  		numberFromSun: 3,
+  		density: 5.51
+  	};
+
+  	describe('earth', function() {
+  		it('is round', function(){
+  			expect(earth.isRound).to.equal(true);
+  		});
+
+  		it('is the third planet form the sun', function(){
+  			expect(earth.numberFromSun).to.equal(3);
+  		});
+
+  		it('is the densist of all the planets', function(){
+  			expect(earth.density).to.be.at.least(5.51);
+  		});
+
+  	});
+
+  	var arr;
+
+  	beforeEach(function(){
+  		arr = [1,2,3];
+  	});
+
+  	describe('arrays', function(){
+  		describe('#push', function(){
+  			it('adds elements to an array', function(){
+  				arr.push(7);
+  				expect(arr).to.deep.equal([1,2,3,7])
+  			});
+  			it('returns the new length of an array', function(){
+  				expect(arr.push(7)).to.equal(4);
+  			});
+  			it('adds anything onto the array', function(){
+  				expect(arr.push({})).to.equal(4);
+  			});
+  		});
+  	});
+
+  	mocha.checkLeaks();
+  	mocha.run();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
